@@ -74,11 +74,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "THE LABEL STUDIO — Premium Labels for the World's Best Brands" },
       { name: "description", content: "A studio designing custom woven labels, leather patches, hangtags and packaging for fashion brands worldwide." },
-      { property: "og:title", content: "THE LABEL STUDIO" },
-      { property: "og:description", content: "Designed. Woven. Delivered. Premium custom labels for global brands." },
+      { property: "og:title", content: "THE LABEL STUDIO — Premium Labels for the World's Best Brands" },
+      { property: "og:description", content: "A studio designing custom woven labels, leather patches, hangtags and packaging for fashion brands worldwide." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "THE LABEL STUDIO — Premium Labels for the World's Best Brands" },
+      { name: "twitter:description", content: "A studio designing custom woven labels, leather patches, hangtags and packaging for fashion brands worldwide." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8c57dfe9-428c-4750-867e-998dad36f8d8/id-preview-00233205--22eb37aa-2171-479d-be0a-dabdfcc7c711.lovable.app-1778708686205.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8c57dfe9-428c-4750-867e-998dad36f8d8/id-preview-00233205--22eb37aa-2171-479d-be0a-dabdfcc7c711.lovable.app-1778708686205.png" },
     ],
     links: [
       {
