@@ -120,15 +120,15 @@ function ActivePanel({ panel, index, total }: { panel: Panel; index: number; tot
         <p className="text-meta-sm text-muted-foreground">— THE STUDIO</p>
       </div>
 
-      <div className="col-span-12 md:col-span-6 row-span-5 relative bg-bone overflow-hidden">
+      <div className="col-span-12 md:col-span-6 row-span-3 md:row-span-5 relative bg-bone overflow-hidden">
         <img key={panel.image} src={panel.image} alt={panel.title}
           className="absolute inset-0 w-full h-full object-cover animate-[heroSlide_.7s_cubic-bezier(.22,1,.36,1)_both]" />
       </div>
 
-      <div className="col-span-12 md:col-span-3 row-span-5 border-t md:border-t-0 md:border-l border-hairline p-6 flex flex-col justify-between bg-paper">
+      <div className="col-span-12 md:col-span-3 row-span-2 md:row-span-5 border-t md:border-t-0 md:border-l border-hairline p-4 md:p-6 flex flex-col md:flex-col justify-between bg-paper overflow-hidden">
         <div>
           <p className="text-meta-sm text-muted-foreground">{panel.num} / FEATURED</p>
-          <div className="mt-4 aspect-square bg-muted overflow-hidden">
+          <div className="mt-4 aspect-square bg-muted overflow-hidden hidden md:block">
             <img src={panel.cardImage} alt="" className="w-full h-full object-cover" loading="lazy" />
           </div>
         </div>
