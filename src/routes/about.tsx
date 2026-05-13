@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { StoreShell } from "@/components/store/StoreShell";
+import atelierImg from "@/assets/studio-atelier.jpg";
+import craftImg from "@/assets/studio-craft.jpg";
+import loomImg from "@/assets/hero-labels-3.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -23,14 +26,24 @@ const PILLARS = [
 function About() {
   return (
     <StoreShell>
-      <section className="relative h-[60vh] min-h-[420px] border-b border-hairline overflow-hidden text-paper"
-        style={{ background: "linear-gradient(135deg,#050505,#1a1a1a 60%,#262626)" }}>
+      <section className="relative h-[60vh] min-h-[420px] border-b border-hairline overflow-hidden text-paper">
+        <img src={craftImg} alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(5,5,15,0.3), rgba(5,5,15,0.75))" }} />
         <div className="absolute inset-0 noise-bg opacity-30" />
         <div className="relative z-10 h-full flex items-end p-6 md:p-12">
           <div>
             <p className="text-meta-sm opacity-60 mb-4">THE STUDIO</p>
             <h1 className="display-xxl text-[14vw] md:text-[10vw]">A STUDIO<br/>FOR LABELS.</h1>
           </div>
+        </div>
+      </section>
+
+      <section className="grid md:grid-cols-2 border-b border-hairline">
+        <div className="aspect-[4/3] md:aspect-auto overflow-hidden border-b md:border-b-0 md:border-r border-hairline">
+          <img src={atelierImg} alt="Inside the atelier" loading="lazy" className="w-full h-full object-cover" />
+        </div>
+        <div className="aspect-[4/3] md:aspect-auto overflow-hidden">
+          <img src={loomImg} alt="Jacquard loom in motion" loading="lazy" className="w-full h-full object-cover" />
         </div>
       </section>
 
