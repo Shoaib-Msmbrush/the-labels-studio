@@ -21,6 +21,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "THE LABEL STUDIO — Designed. Woven. Delivered." },
       { property: "og:description", content: "Premium custom labels and packaging for global fashion brands." },
     ],
+    links: [{ rel: "canonical", href: "https://dock-lab-studio.lovable.app/" }],
   }),
   component: Home,
 });
