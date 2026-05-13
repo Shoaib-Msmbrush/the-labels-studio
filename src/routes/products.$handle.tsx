@@ -18,6 +18,22 @@ export const Route = createFileRoute("/products/$handle")({
         { property: "og:image", content: p?.image ?? "" },
       ],
       links: [{ rel: "canonical", href: `https://dock-lab-studio.lovable.app/products/${params.handle}` }],
+      scripts: p
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Product",
+                name: p.title,
+                description: p.description,
+                image: p.image,
+                brand: { "@type": "Brand", name: "The Label Studio" },
+                url: `https://dock-lab-studio.lovable.app/products/${params.handle}`,
+              }),
+            },
+          ]
+        : [],
     };
   },
   component: ProductPage,
