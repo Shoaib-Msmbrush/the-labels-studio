@@ -90,6 +90,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://dock-lab-studio.lovable.app/#organization",
+              name: "The Label Studio",
+              url: "https://dock-lab-studio.lovable.app/",
+              description: "A studio designing custom woven labels, leather patches, hangtags and packaging for fashion brands worldwide.",
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://dock-lab-studio.lovable.app/#website",
+              url: "https://dock-lab-studio.lovable.app/",
+              name: "The Label Studio",
+              publisher: { "@id": "https://dock-lab-studio.lovable.app/#organization" },
+            },
+          ],
+        }),
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
