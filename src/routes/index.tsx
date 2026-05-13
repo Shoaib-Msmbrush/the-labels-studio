@@ -21,6 +21,7 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "A studio designing custom woven labels, leather patches, hangtags and care labels for fashion brands worldwide." },
       { property: "og:title", content: "THE LABEL STUDIO — Designed. Woven. Delivered." },
       { property: "og:description", content: "Premium custom labels and packaging for global fashion brands." },
+      { property: "og:url", content: "https://dock-lab-studio.lovable.app/" },
     ],
     links: [
       { rel: "canonical", href: "https://dock-lab-studio.lovable.app/" },
