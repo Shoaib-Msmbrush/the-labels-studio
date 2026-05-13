@@ -176,8 +176,9 @@ function NewsletterSocialBlock() {
         <h2 className="display-xxl text-5xl md:text-7xl mb-6">BE FIRST.<br/>NEVER MISS<br/>A DROP.</h2>
         <form onSubmit={e=>e.preventDefault()} className="max-w-md">
           <div className="flex border-b border-ink pb-2 mb-4">
-            <input type="email" placeholder="EMAIL ADDRESS" className="flex-1 bg-transparent outline-none text-meta placeholder:text-muted-foreground" />
-            <button className="text-meta">SUBMIT →</button>
+            <label htmlFor="home-newsletter-email" className="sr-only">Email address</label>
+            <input id="home-newsletter-email" type="email" placeholder="EMAIL ADDRESS" aria-label="Email address" className="flex-1 bg-transparent outline-none text-meta placeholder:text-muted-foreground" />
+            <button type="submit" className="text-meta">SUBMIT →</button>
           </div>
         </form>
       </div>

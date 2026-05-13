@@ -63,7 +63,7 @@ function About() {
             transition={{ duration: 0.6, delay: i * 0.05 }}
             className="grid md:grid-cols-12 border-b border-hairline last:border-b-0 px-6 md:px-12 py-16 md:py-24">
             <div className="md:col-span-2"><span className="display-xxl text-7xl md:text-8xl">{p.num}</span></div>
-            <div className="md:col-span-7"><h3 className="text-3xl md:text-5xl font-extrabold uppercase">{p.title}</h3></div>
+            <div className="md:col-span-7"><h2 className="text-3xl md:text-5xl font-extrabold uppercase">{p.title}</h2></div>
             <div className="md:col-span-3 text-meta-sm text-muted-foreground" style={{textTransform:"none",letterSpacing:0}}>{p.body}</div>
           </motion.div>
         ))}
