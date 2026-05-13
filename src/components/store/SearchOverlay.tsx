@@ -48,7 +48,7 @@ export function SearchOverlay() {
               <input
                 autoFocus value={q} onChange={(e) => setQ(e.target.value)}
                 placeholder="WHAT ARE YOU LOOKING FOR?"
-                className="flex-1 bg-transparent outline-none text-2xl md:text-4xl uppercase font-bold placeholder:text-muted-foreground/60"
+                className="flex-1 bg-transparent outline-none text-2xl md:text-4xl uppercase font-bold placeholder:text-muted-foreground"
               />
               {q && <button onClick={() => setQ("")} className="text-meta">CLEAR</button>}
             </div>

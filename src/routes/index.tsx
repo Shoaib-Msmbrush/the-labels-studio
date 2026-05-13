@@ -109,8 +109,8 @@ function JourneyCarousel() {
     <section className="bg-ink text-paper relative overflow-hidden">
       <div className="grid md:grid-cols-12 min-h-[80vh]">
         <div className="md:col-span-2 p-8 border-r border-paper/10">
-          <p className="text-meta-sm opacity-50">03 / THE PROCESS</p>
-          <p className="text-meta-sm opacity-50 mt-3">BRIEF · DESIGN · STITCH · SHIP</p>
+          <p className="text-meta-sm opacity-80">03 / THE PROCESS</p>
+          <p className="text-meta-sm opacity-80 mt-3">BRIEF · DESIGN · STITCH · SHIP</p>
         </div>
         <motion.div key={item.num}
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}
@@ -123,9 +123,9 @@ function JourneyCarousel() {
         </motion.div>
         <div className="md:col-span-3 p-8 flex flex-col justify-between">
           <div>
-            <p className="text-meta-sm opacity-50 mb-3">CHAPTER {item.num}</p>
+            <p className="text-meta-sm opacity-80 mb-3">CHAPTER {item.num}</p>
             <h3 className="text-3xl font-extrabold uppercase mb-4">{item.label}</h3>
-            <p className="text-meta-sm opacity-70" style={{ textTransform: "none", letterSpacing: 0 }}>{item.body}</p>
+            <p className="text-meta-sm opacity-90" style={{ textTransform: "none", letterSpacing: 0 }}>{item.body}</p>
           </div>
           <button className="arrow-cta border border-paper/40 px-4 py-2 text-meta-sm self-start mt-6">READ MORE <ArrowRight className="size-3" /></button>
         </div>
@@ -134,7 +134,7 @@ function JourneyCarousel() {
         {JOURNEY.map((j, i) => (
           <button key={j.num} onClick={() => setActive(i)}
             className={`p-4 md:p-6 border-r border-paper/10 last:border-r-0 text-left transition ${i === active ? "bg-paper text-ink" : "hover:bg-paper/5"}`}>
-            <p className={`text-meta-sm ${i === active ? "opacity-100" : "opacity-50"}`}>{j.num}.</p>
+            <p className={`text-meta-sm ${i === active ? "opacity-100" : "opacity-80"}`}>{j.num}.</p>
             <p className={`text-meta mt-2 ${i === active ? "" : "opacity-80"}`}>{j.label}</p>
           </button>
         ))}

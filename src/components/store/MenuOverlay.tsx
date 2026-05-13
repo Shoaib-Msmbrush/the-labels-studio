@@ -110,7 +110,7 @@ export function MenuOverlay() {
               <form onSubmit={(e) => e.preventDefault()} className="mt-auto">
                 <div className="flex border-b border-paper/40 pb-2 mb-4">
                   <input type="email" required placeholder="EMAIL ADDRESS"
-                    className="bg-transparent flex-1 outline-none text-meta placeholder:opacity-50 text-paper" />
+                    className="bg-transparent flex-1 outline-none text-meta placeholder:opacity-80 text-paper" />
                 </div>
                 <button className="w-full border border-paper/60 hover:bg-paper hover:text-ink py-3 text-meta transition-colors">
                   JOIN THE COMMUNITY →
