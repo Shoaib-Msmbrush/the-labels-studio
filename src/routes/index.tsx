@@ -5,7 +5,6 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { StoreShell } from "@/components/store/StoreShell";
 import { HeroCarousel } from "@/components/store/HeroCarousel";
 import { ScrollDockShowcase } from "@/components/store/ScrollDockShowcase";
-import { fetchProducts, ShopifyProduct } from "@/lib/shopify";
 import insideImg from "@/assets/hero-labels-1.jpg";
 import socialImg from "@/assets/hero-labels-3.jpg";
 import journeyImg from "@/assets/labels-grid.jpg";
@@ -25,8 +24,9 @@ export const Route = createFileRoute("/")({
 const JOURNEY = [
   { num: "01", label: "THE BRIEF", body: "It begins with a brand. A material. A finish. Every label starts as a conversation about identity." },
   { num: "02", label: "THE DESIGN", body: "We sketch, weave samples, refine threads. Each label is the residue of dozens of rejected ones." },
-  { num: "03", label: "THE STITCH", body: "Produced in our studio with Jacquard looms and master finishers. Inspected and packed by hand." },
-  { num: "04", label: "THE DELIVERY", body: "From our floor to your factory anywhere in the world. Tracked, certified, on time." },
+  { num: "03", label: "THE WEAVE", body: "Produced in our studio on Jacquard looms by master finishers. Every metre inspected by hand." },
+  { num: "04", label: "THE FINISH", body: "Cut, sealed, folded. Pressed, packed, signed off — sample-matched before it leaves the floor." },
+  { num: "05", label: "THE DELIVERY", body: "From our studio to your factory, anywhere in the world. Tracked, certified, on time." },
 ] as const;
 
 const PRESS: Array<{ date: string; read: string; source: string; title: string; latest?: boolean }> = [
@@ -126,7 +126,7 @@ function JourneyCarousel() {
           <button className="arrow-cta border border-paper/40 px-4 py-2 text-meta-sm self-start mt-6">READ MORE <ArrowRight className="size-3" /></button>
         </div>
       </div>
-      <div className="grid grid-cols-4 border-t border-paper/10">
+      <div className="grid grid-cols-5 border-t border-paper/10">
         {JOURNEY.map((j, i) => (
           <button key={j.num} onClick={() => setActive(i)}
             className={`p-4 md:p-6 border-r border-paper/10 last:border-r-0 text-left transition ${i === active ? "bg-paper text-ink" : "hover:bg-paper/5"}`}>

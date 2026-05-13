@@ -1,64 +1,68 @@
-import { createFileRoute, useParams } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { createFileRoute, useParams, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowUpRight, Filter as FilterIcon, ChevronDown, Grid3x3, LayoutGrid } from "lucide-react";
 import { StoreShell } from "@/components/store/StoreShell";
-import { ProductGrid } from "@/components/store/ProductGrid";
-import { fetchProducts, ShopifyProduct } from "@/lib/shopify";
-import { Filter as FilterIcon, ChevronDown, Grid3x3, LayoutGrid } from "lucide-react";
+import { CATEGORY_CHIPS, CATEGORY_HEROES, CATEGORY_LABELS, getProductsByCategory, LabelProduct } from "@/lib/labelCatalog";
 
 export const Route = createFileRoute("/collections/$handle")({
-  head: ({ params }) => ({
-    meta: [
-      { title: `${params.handle.replace(/-/g," ").toUpperCase()} — INDUSTRIA/LAB` },
-      { name: "description", content: `Shop the ${params.handle.replace(/-/g," ")} collection from INDUSTRIA/LAB.` },
-    ],
-  }),
+  head: ({ params }) => {
+    const name = (CATEGORY_LABELS as any)[params.handle] ?? params.handle.replace(/-/g, " ");
+    return {
+      meta: [
+        { title: `${name.toUpperCase()} — The Label Studio` },
+        { name: "description", content: `Premium ${name.toLowerCase()} for fashion brands — sampled, approved, produced.` },
+        { property: "og:title", content: `${name} — The Label Studio` },
+        { property: "og:description", content: `Browse our ${name.toLowerCase()} collection.` },
+      ],
+    };
+  },
   component: CollectionPage,
 });
 
-const CHIPS = ["ALL", "SNEAKERS", "BOOTS", "SLIDES", "RUNNERS", "ACCESSORIES"];
-const SORTS = ["FEATURED", "BEST SELLING", "PRICE LOW–HIGH", "PRICE HIGH–LOW"];
+const SORTS = ["FEATURED", "FASTEST LEAD TIME", "LOWEST MOQ", "PREMIUM FIRST"];
 
 function CollectionPage() {
   const { handle } = useParams({ from: "/collections/$handle" });
-  const [products, setProducts] = useState<ShopifyProduct[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [chip, setChip] = useState("ALL");
+  const products = getProductsByCategory(handle);
   const [grid, setGrid] = useState<"col" | "overview">("col");
   const [sort, setSort] = useState(SORTS[0]);
   const [showFilter, setShowFilter] = useState(false);
 
-  useEffect(() => {
-    setLoading(true);
-    const q = handle === "all" ? undefined : `tag:${handle} OR product_type:${handle}`;
-    fetchProducts(48, q).then(p => { setProducts(p); setLoading(false); });
-  }, [handle]);
+  const sorted = [...products];
+  if (sort === "FASTEST LEAD TIME") {
+    sorted.sort((a, b) => parseInt(a.leadTime) - parseInt(b.leadTime));
+  } else if (sort === "LOWEST MOQ") {
+    sorted.sort((a, b) => parseInt(a.moq) - parseInt(b.moq));
+  } else if (sort === "PREMIUM FIRST") {
+    sorted.sort((a, b) => (b.badge === "PREMIUM FINISH" ? 1 : 0) - (a.badge === "PREMIUM FINISH" ? 1 : 0));
+  }
 
-  const sorted = [...products].sort((a, b) => {
-    const pa = parseFloat(a.node.priceRange.minVariantPrice.amount);
-    const pb = parseFloat(b.node.priceRange.minVariantPrice.amount);
-    if (sort === "PRICE LOW–HIGH") return pa - pb;
-    if (sort === "PRICE HIGH–LOW") return pb - pa;
-    return 0;
-  });
-
-  const title = handle.replace(/-/g, " ").toUpperCase();
+  const title = (CATEGORY_LABELS as any)[handle] ?? handle.replace(/-/g, " ");
+  const hero = CATEGORY_HEROES[handle] ?? CATEGORY_HEROES["all"];
 
   return (
     <StoreShell>
-      <section className="border-b border-hairline px-6 md:px-12 py-16 md:py-24 bg-paper">
-        <p className="text-meta-sm text-muted-foreground mb-4">COLLECTION / {title}</p>
-        <h1 className="display-xxl text-[16vw] md:text-[12vw]">{title}</h1>
+      <section className="relative h-[60vh] min-h-[420px] border-b border-hairline overflow-hidden text-paper">
+        <img src={hero.image} alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(5,5,15,0.25), rgba(5,5,15,0.7))" }} />
+        <div className="relative z-10 h-full flex flex-col justify-end px-6 md:px-12 py-10">
+          <p className="text-meta-sm opacity-70 mb-4">COLLECTION / {title.toUpperCase()}</p>
+          <h1 className="display-xxl text-[14vw] md:text-[10vw]">{title.toUpperCase()}</h1>
+          <p className="text-meta md:text-base opacity-80 max-w-xl mt-4" style={{ textTransform: "none", letterSpacing: 0 }}>{hero.tagline}</p>
+        </div>
       </section>
 
       <div className="sticky top-[72px] z-30 bg-bone/95 backdrop-blur border-b border-hairline">
         <div className="px-6 md:px-12 h-12 flex items-center justify-between gap-4">
           <div className="flex items-center gap-1">
-            <button onClick={() => setGrid("col")} className={`size-8 flex items-center justify-center border border-hairline ${grid==="col" ? "bg-ink text-paper" : ""}`}><LayoutGrid className="size-4" /></button>
-            <button onClick={() => setGrid("overview")} className={`size-8 flex items-center justify-center border border-hairline ${grid==="overview" ? "bg-ink text-paper" : ""}`}><Grid3x3 className="size-4" /></button>
+            <button onClick={() => setGrid("col")} aria-label="Card grid" className={`size-8 flex items-center justify-center border border-hairline ${grid === "col" ? "bg-ink text-paper" : ""}`}><LayoutGrid className="size-4" /></button>
+            <button onClick={() => setGrid("overview")} aria-label="Compact grid" className={`size-8 flex items-center justify-center border border-hairline ${grid === "overview" ? "bg-ink text-paper" : ""}`}><Grid3x3 className="size-4" /></button>
+            <span className="hidden md:inline ml-3 text-meta-sm text-muted-foreground">{sorted.length.toString().padStart(2, "0")} ITEMS</span>
           </div>
           <div className="flex items-center gap-4">
             <button onClick={() => setShowFilter(true)} className="flex items-center gap-2 text-meta-sm border border-hairline px-3 py-1.5">
-              <FilterIcon className="size-3" /> FILTER (0)
+              <FilterIcon className="size-3" /> FILTER
             </button>
             <label className="flex items-center gap-2 text-meta-sm">
               SORT:
@@ -70,36 +74,34 @@ function CollectionPage() {
           </div>
         </div>
         <div className="px-6 md:px-12 py-2 flex items-center gap-2 overflow-x-auto border-t border-hairline">
-          {CHIPS.map(c => (
-            <button key={c} onClick={() => setChip(c)}
-              className={`text-meta-sm whitespace-nowrap px-3 py-1.5 border ${chip === c ? "bg-ink text-paper border-ink" : "border-hairline hover:bg-ink hover:text-paper"}`}>{c}</button>
+          {CATEGORY_CHIPS.map(c => (
+            <Link key={c.slug} to="/collections/$handle" params={{ handle: c.slug }}
+              className={`text-meta-sm whitespace-nowrap px-3 py-1.5 border ${handle === c.slug ? "bg-ink text-paper border-ink" : "border-hairline hover:bg-ink hover:text-paper transition-colors"}`}>
+              {c.label.toUpperCase()}
+            </Link>
           ))}
         </div>
       </div>
 
-      <section className="px-6 md:px-12 py-10">
-        {loading ? (
-          <div className={`grid grid-cols-2 md:grid-cols-${grid==="overview" ? 6 : 4} bg-hairline gap-px border border-hairline`}>
-            {Array.from({ length: grid==="overview"?12:8 }).map((_, i) => (
-              <div key={i} className="bg-paper aspect-[4/5] animate-pulse" />
-            ))}
-          </div>
+      <section className="px-6 md:px-12 py-10 bg-paper">
+        {sorted.length === 0 ? (
+          <div className="border border-hairline p-16 text-center text-meta text-muted-foreground">NO PRODUCTS IN THIS COLLECTION YET.</div>
         ) : grid === "overview" ? (
           <div className="grid grid-cols-3 md:grid-cols-6 bg-hairline gap-px border border-hairline">
-            {sorted.length === 0 ? (
-              <div className="col-span-full p-12 text-center text-meta text-muted-foreground bg-paper">NO PRODUCTS YET — ADD ONE FROM THE CHAT.</div>
-            ) : sorted.map(p => (
-              <a key={p.node.id} href={`/products/${p.node.handle}`} className="bg-paper aspect-square overflow-hidden group">
-                {p.node.images.edges[0] && <img src={p.node.images.edges[0].node.url} alt="" className="w-full h-full object-cover group-hover:scale-105 transition" />}
-              </a>
+            {sorted.map(p => (
+              <Link key={p.handle} to="/products/$handle" params={{ handle: p.handle }} className="bg-paper aspect-square overflow-hidden group relative">
+                <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy" />
+                <span className="absolute bottom-2 left-2 right-2 text-meta-sm text-paper opacity-0 group-hover:opacity-100 transition bg-ink/70 px-2 py-1 truncate">{p.title}</span>
+              </Link>
             ))}
           </div>
         ) : (
-          <ProductGrid products={sorted} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-hairline gap-px border border-hairline">
+            {sorted.map((p, i) => <LabelCard key={p.handle} p={p} i={i} />)}
+          </div>
         )}
       </section>
 
-      {/* Filter drawer */}
       {showFilter && (
         <div className="fixed inset-0 z-50">
           <div onClick={() => setShowFilter(false)} className="absolute inset-0 bg-ink/40" />
@@ -108,15 +110,49 @@ function CollectionPage() {
               <span className="text-meta">FILTER</span>
               <button onClick={() => setShowFilter(false)} className="text-meta">CLOSE</button>
             </div>
-            {["COLLECTION", "SIZE", "COLOR", "AVAILABILITY", "PRICE"].map(g => (
+            {["MATERIAL", "FINISH", "MOQ", "LEAD TIME", "PRICE BAND"].map(g => (
               <details key={g} className="border-t border-hairline py-4">
                 <summary className="text-meta cursor-pointer flex justify-between">{g} <span>+</span></summary>
-                <div className="pt-3 text-meta-sm text-muted-foreground">No options yet.</div>
+                <div className="pt-3 text-meta-sm text-muted-foreground">Talk to the studio for tailored options.</div>
               </details>
             ))}
           </aside>
         </div>
       )}
     </StoreShell>
+  );
+}
+
+function LabelCard({ p, i }: { p: LabelProduct; i: number }) {
+  const [hover, setHover] = useState(false);
+  return (
+    <motion.div initial={{ y: 16, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-10%" }} transition={{ duration: 0.5, delay: (i % 8) * 0.04 }}>
+      <Link to="/products/$handle" params={{ handle: p.handle }}
+        onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
+        className="group block bg-paper relative">
+        <div className="aspect-[4/5] bg-bone overflow-hidden relative">
+          <img src={hover ? p.hover : p.image} alt={p.title}
+            className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.04]" loading="lazy" />
+          <span className="absolute top-3 left-3 text-meta-sm bg-paper/90 border border-hairline px-2 py-1">{p.badge}</span>
+          <span className="absolute bottom-3 right-3 text-meta-sm bg-ink/80 text-paper px-2 py-1 backdrop-blur opacity-0 group-hover:opacity-100 transition">VIEW DETAILS →</span>
+        </div>
+        <div className="p-4 space-y-1.5">
+          <p className="text-meta-sm text-muted-foreground">{p.categoryLabel.toUpperCase()}</p>
+          <p className="text-meta truncate">{p.title.toUpperCase()}</p>
+          <div className="flex items-center justify-between text-meta-sm text-muted-foreground pt-1">
+            <span>{p.finish}</span>
+            <span>MOQ {p.moq}</span>
+          </div>
+          <div className="flex items-center justify-between pt-2 border-t border-hairline mt-2">
+            <span className="text-meta-sm">{p.leadTime}</span>
+            <span className="text-meta font-bold">{p.priceLabel}</span>
+          </div>
+          <div className="flex gap-2 pt-3">
+            <span className="flex-1 text-center border border-hairline text-meta-sm py-2">REQUEST QUOTE</span>
+            <span className="text-center border border-hairline text-meta-sm py-2 px-3">+</span>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
   );
 }

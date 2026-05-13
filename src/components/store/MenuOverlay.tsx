@@ -8,11 +8,19 @@ const ease = [0.76, 0, 0.24, 1] as const;
 
 const SHOP_LINKS = [
   { label: "ALL LABELS", to: "/collections/$handle", params: { handle: "all" } },
-  { label: "WOVEN", to: "/collections/$handle", params: { handle: "woven" } },
-  { label: "LEATHER", to: "/collections/$handle", params: { handle: "leather" } },
+  { label: "WOVEN", to: "/collections/$handle", params: { handle: "woven-labels" } },
+  { label: "LEATHER", to: "/collections/$handle", params: { handle: "leather-patches" } },
   { label: "HANGTAGS", to: "/collections/$handle", params: { handle: "hangtags" } },
+  { label: "CUSTOM OEM", to: "/collections/$handle", params: { handle: "custom-oem" } },
 ];
-const COLLECTIONS = ["WOVEN LABELS", "LEATHER PATCHES", "HANGTAGS", "CARE LABELS", "PACKAGING"];
+const COLLECTIONS: Array<{ label: string; handle: string }> = [
+  { label: "WOVEN LABELS", handle: "woven-labels" },
+  { label: "LEATHER PATCHES", handle: "leather-patches" },
+  { label: "HANGTAGS", handle: "hangtags" },
+  { label: "CARE LABELS", handle: "care-labels" },
+  { label: "EMBROIDERED PATCHES", handle: "embroidered-patches" },
+  { label: "PACKAGING", handle: "packaging" },
+];
 const SOCIAL = ["INSTAGRAM", "TIKTOK", "YOUTUBE", "X / TWITTER"];
 
 export function MenuOverlay() {
@@ -63,9 +71,9 @@ export function MenuOverlay() {
               <p className="text-meta-sm text-muted-foreground mb-6">02 / COLLECTIONS</p>
               <ul className="space-y-3">
                 {COLLECTIONS.map(c => (
-                  <li key={c}>
-                    <Link to="/collections/$handle" params={{ handle: c.toLowerCase() }} onClick={closeMenu}
-                      className="text-2xl md:text-3xl font-bold uppercase hover:opacity-60 block">{c}</Link>
+                  <li key={c.handle}>
+                    <Link to="/collections/$handle" params={{ handle: c.handle }} onClick={closeMenu}
+                      className="text-2xl md:text-3xl font-bold uppercase hover:opacity-60 block">{c.label}</Link>
                   </li>
                 ))}
               </ul>
