@@ -127,7 +127,7 @@ function JourneyCarousel() {
           <button className="arrow-cta border border-paper/40 px-4 py-2 text-meta-sm self-start mt-6">READ MORE <ArrowRight className="size-3" /></button>
         </div>
       </div>
-      <div className="grid grid-cols-4 border-t border-paper/10">
+      <div className="grid grid-cols-5 border-t border-paper/10">
         {JOURNEY.map((j, i) => (
           <button key={j.num} onClick={() => setActive(i)}
             className={`p-4 md:p-6 border-r border-paper/10 last:border-r-0 text-left transition ${i === active ? "bg-paper text-ink" : "hover:bg-paper/5"}`}>
