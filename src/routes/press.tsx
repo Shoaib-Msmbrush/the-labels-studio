@@ -65,7 +65,7 @@ function Press() {
                 {p.latest && <span className="border border-current px-2 py-0.5">LATEST</span>}
               </div>
               <p className="text-meta-sm opacity-60">{p.source}</p>
-              <h3 className="text-xl md:text-2xl font-extrabold uppercase leading-tight">{p.title}</h3>
+              <h2 className="text-xl md:text-2xl font-extrabold uppercase leading-tight">{p.title}</h2>
               <p className="text-meta-sm text-muted-foreground" style={{ textTransform: "none", letterSpacing: 0 }}>{p.excerpt}</p>
               <span className="arrow-cta text-meta-sm mt-auto">READ MORE <ArrowRight className="size-3" /></span>
             </div>

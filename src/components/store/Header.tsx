@@ -79,7 +79,7 @@ export function Header() {
             <ShoppingBag className="size-4" />
             <span className="hidden sm:inline">CART</span>({cartCount.toString().padStart(2,"0")})
           </button>
-          <button onClick={toggleSearch} className="md:hidden">
+          <button onClick={toggleSearch} aria-label="Search" className="md:hidden">
             <Search className="size-4" />
           </button>
         </div>

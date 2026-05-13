@@ -52,6 +52,8 @@ function ProductPage() {
           <div className="hidden lg:flex col-span-2 flex-col gap-2 p-3 border-r border-hairline">
             {product.gallery.map((img, i) => (
               <button key={i} onClick={() => setImgIdx(i)}
+                aria-label={`Show image ${i + 1} of ${product.gallery.length}`}
+                aria-pressed={i === imgIdx}
                 className={`aspect-square bg-bone overflow-hidden border ${i === imgIdx ? "border-ink" : "border-transparent"}`}>
                 <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" />
               </button>
