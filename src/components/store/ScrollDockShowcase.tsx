@@ -4,12 +4,12 @@ import { ArrowUpRight } from "lucide-react";
 import { fetchProducts, formatPrice, ShopifyProduct } from "@/lib/shopify";
 
 const PLACEHOLDER_PANELS = [
-  { num: "01", title: "HERO SNEAKER", colors: 1, philosophy: "FORM EARNED THROUGH ITERATION." },
-  { num: "02", title: "LOW SNEAKER", colors: 2, philosophy: "GROUNDED. UN-LOUD. BUILT TO LAST." },
-  { num: "03", title: "HOOPS SNEAKER", colors: 2, philosophy: "FOR THE COURT AND THE CULTURE." },
-  { num: "04", title: "SIGNATURE RUNNER", colors: 4, philosophy: "DISTANCE IS A DESIGN PROBLEM." },
-  { num: "05", title: "SLIDE", colors: 3, philosophy: "RECOVERY IS PART OF THE WORK." },
-  { num: "06", title: "BOOT", colors: 2, philosophy: "ARCHITECTURE FOR THE FOOT." },
+  { num: "01", title: "WOVEN LABELS", colors: 4, philosophy: "THE SIGNATURE STITCHED INTO EVERY GARMENT." },
+  { num: "02", title: "LEATHER PATCHES", colors: 3, philosophy: "HERITAGE YOU CAN FEEL BETWEEN YOUR FINGERS." },
+  { num: "03", title: "HANGTAGS", colors: 5, philosophy: "THE FIRST HANDSHAKE BETWEEN BRAND AND BUYER." },
+  { num: "04", title: "CARE LABELS", colors: 2, philosophy: "QUIET PRECISION FOR THE INSIDE OF EVERY PIECE." },
+  { num: "05", title: "EMBROIDERED PATCHES", colors: 6, philosophy: "ICONOGRAPHY THAT OUTLASTS THE SEASON." },
+  { num: "06", title: "PACKAGING SUITE", colors: 3, philosophy: "THE UNBOXING IS PART OF THE PRODUCT." },
 ] as const;
 
 export function ScrollDockShowcase() {

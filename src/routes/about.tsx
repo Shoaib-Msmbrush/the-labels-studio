@@ -5,19 +5,19 @@ import { StoreShell } from "@/components/store/StoreShell";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "OUR STORY — INDUSTRIA/LAB" },
-      { name: "description", content: "Inside the lab: how we design, prototype, and build footwear in small batches." },
-      { property: "og:title", content: "Our Story — INDUSTRIA/LAB" },
-      { property: "og:description", content: "A small atelier making footwear like furniture." },
+      { title: "THE STUDIO — The Label Studio" },
+      { name: "description", content: "Inside The Label Studio: how we design, weave, and finish premium labels for fashion brands worldwide." },
+      { property: "og:title", content: "The Studio — The Label Studio" },
+      { property: "og:description", content: "A studio designing custom labels for the world's best brands." },
     ],
   }),
   component: About,
 });
 
 const PILLARS = [
-  { num: "01", title: "DESIGN STUDIO / PROTOTYPING LAB", body: "Drawings become lasts. Lasts become molds. Molds become arguments about how a shoe should feel." },
-  { num: "02", title: "MANUFACTURING / PRODUCT BUILD", body: "Small batches, hand-finished, numbered. Made to be repaired, not replaced." },
-  { num: "03", title: "CULTURE / COMMUNITY", body: "We design with the people who actually wear them: athletes, artists, builders." },
+  { num: "01", title: "DESIGN STUDIO / SAMPLING ROOM", body: "Sketches become weave files. Threads become finishes. Finishes become the brand identity stitched into every garment." },
+  { num: "02", title: "JACQUARD LOOMS / FINISHING", body: "Woven on industrial Jacquard machines, cut, sealed, and inspected by hand. Made to outlast the garment." },
+  { num: "03", title: "GLOBAL BRAND PARTNERS", body: "We work with independent labels, heritage houses, and emerging designers across 20+ countries." },
 ];
 
 function About() {
@@ -28,17 +28,17 @@ function About() {
         <div className="absolute inset-0 noise-bg opacity-30" />
         <div className="relative z-10 h-full flex items-end p-6 md:p-12">
           <div>
-            <p className="text-meta-sm opacity-60 mb-4">OUR STORY</p>
-            <h1 className="display-xxl text-[14vw] md:text-[10vw]">ABOUT<br/>INDUSTRIA/LAB.</h1>
+            <p className="text-meta-sm opacity-60 mb-4">THE STUDIO</p>
+            <h1 className="display-xxl text-[14vw] md:text-[10vw]">A STUDIO<br/>FOR LABELS.</h1>
           </div>
         </div>
       </section>
 
       <section className="px-6 md:px-12 py-24 grid md:grid-cols-12 gap-8 border-b border-hairline">
-        <div className="md:col-span-2 text-meta-sm text-muted-foreground">FOUNDER · M. ARJUN</div>
+        <div className="md:col-span-2 text-meta-sm text-muted-foreground">EST. STUDIO · WORLDWIDE</div>
         <div className="md:col-span-7">
           <p className="text-2xl md:text-3xl font-bold uppercase leading-tight">
-            We started in a 40-square-meter room with one last and one idea — that footwear could behave like furniture: built once, repaired forever, signed by the maker.
+            The Label Studio is where we design custom labels for fashion brands all over the world. Woven labels, leather patches, hangtags, care labels and packaging — engineered to make every garment unmistakably yours.
           </p>
         </div>
       </section>

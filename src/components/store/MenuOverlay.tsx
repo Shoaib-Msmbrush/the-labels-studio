@@ -7,12 +7,12 @@ import { useEffect } from "react";
 const ease = [0.76, 0, 0.24, 1] as const;
 
 const SHOP_LINKS = [
-  { label: "SHOP ALL", to: "/collections/$handle", params: { handle: "all" } },
-  { label: "MEN", to: "/collections/$handle", params: { handle: "men" } },
-  { label: "WOMEN", to: "/collections/$handle", params: { handle: "women" } },
-  { label: "NEW DROPS", to: "/collections/$handle", params: { handle: "new-drops" } },
+  { label: "ALL LABELS", to: "/collections/$handle", params: { handle: "all" } },
+  { label: "WOVEN", to: "/collections/$handle", params: { handle: "woven" } },
+  { label: "LEATHER", to: "/collections/$handle", params: { handle: "leather" } },
+  { label: "HANGTAGS", to: "/collections/$handle", params: { handle: "hangtags" } },
 ];
-const COLLECTIONS = ["SNEAKERS", "BOOTS", "SLIDES", "RUNNERS", "ACCESSORIES"];
+const COLLECTIONS = ["WOVEN LABELS", "LEATHER PATCHES", "HANGTAGS", "CARE LABELS", "PACKAGING"];
 const SOCIAL = ["INSTAGRAM", "TIKTOK", "YOUTUBE", "X / TWITTER"];
 
 export function MenuOverlay() {
@@ -79,8 +79,8 @@ export function MenuOverlay() {
               <div className="relative z-10 h-full flex flex-col justify-between p-8 md:p-10">
                 <p className="text-meta-sm opacity-60">FEATURED COLLECTION</p>
                 <div>
-                  <h3 className="display-xxl text-5xl md:text-6xl">VOLUME 04 / LAB SERIES</h3>
-                  <p className="text-meta mt-3 opacity-70">14 PIECES · LIMITED ARRIVALS</p>
+                  <h3 className="display-xxl text-5xl md:text-6xl">SEASON 04 / SIGNATURE TAGS</h3>
+                  <p className="text-meta mt-3 opacity-70">12 LABELS · GLOBAL EDITION</p>
                   <Link to="/collections/$handle" params={{ handle: "all" }} onClick={closeMenu}
                     className="arrow-cta mt-6 inline-flex text-meta">
                     EXPLORE COLLECTION <ArrowUpRight className="size-4" />
@@ -93,10 +93,10 @@ export function MenuOverlay() {
             <Stagger className="bg-ink text-paper p-8 md:p-10 flex flex-col">
               <p className="text-meta-sm opacity-60 mb-4">04 / STAY UPDATED</p>
               <h3 className="text-3xl md:text-4xl font-extrabold uppercase leading-[0.95] mb-4">
-                FIRST TO KNOW.<br/>FIRST TO COP.
+                FIRST TO SEE.<br/>FIRST TO STITCH.
               </h3>
               <p className="text-meta opacity-60 mb-6 max-w-xs">
-                Drops, lab notes, and product films sent before everyone else.
+                Studio releases, label trends, and material lookbooks for fashion brands.
               </p>
               <form onSubmit={(e) => e.preventDefault()} className="mt-auto">
                 <div className="flex border-b border-paper/40 pb-2 mb-4">

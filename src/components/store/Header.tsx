@@ -3,12 +3,13 @@ import { Link } from "@tanstack/react-router";
 import { Search, User, Heart, ShoppingBag, Menu as MenuIcon, X } from "lucide-react";
 import { useUiStore } from "@/hooks/useUiStore";
 import { useCartStore } from "@/stores/cartStore";
+import logo from "@/assets/logo.jpeg";
 
 const TICKER = [
-  "FREE SHIPPING ON ALL ORDERS",
-  "NEW DROP — LIMITED ARRIVALS",
-  "SHOP THE LAB · BUILT DIFFERENT",
-  "ENGINEERED FOR MOTION",
+  "FREE WORLDWIDE SHIPPING ON BULK ORDERS",
+  "NEW SEASON LABEL DROP — LIMITED RUN",
+  "WOVEN · LEATHER · HANGTAGS · CARE",
+  "DESIGNED FOR BRANDS, BUILT FOR GARMENTS",
 ];
 
 export function Header() {
@@ -45,10 +46,10 @@ export function Header() {
             {menuOpen ? <X className="size-4" /> : <MenuIcon className="size-4" />}
             <span>{menuOpen ? "CLOSE" : "MENU"}</span>
           </button>
-          <Link to="/collections/$handle" params={{ handle: "all" }} className="hover:opacity-60">SHOP</Link>
+          <Link to="/collections/$handle" params={{ handle: "all" }} className="hover:opacity-60">LABELS</Link>
           <Link to="/press" className="hover:opacity-60">PRESS</Link>
-          <Link to="/about" className="hover:opacity-60">OUR STORY</Link>
-          <Link to="/services" className="hover:opacity-60">ATELIER</Link>
+          <Link to="/about" className="hover:opacity-60">THE STUDIO</Link>
+          <Link to="/services" className="hover:opacity-60">CUSTOM</Link>
         </nav>
         <button onClick={toggleMenu} className="md:hidden text-meta flex items-center gap-2">
           {menuOpen ? <X className="size-4" /> : <MenuIcon className="size-4" />}
@@ -56,8 +57,11 @@ export function Header() {
         </button>
 
         {/* Center logo */}
-        <Link to="/" className="absolute left-1/2 -translate-x-1/2 font-extrabold tracking-[0.18em] text-[18px] uppercase">
-          INDUSTRIA<span className="text-muted-foreground">/</span>LAB
+        <Link to="/" className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
+          <img src={logo} alt="The Label Studio" className="h-7 w-auto object-contain" />
+          <span className="font-extrabold tracking-[0.18em] text-[15px] uppercase leading-none text-[color:var(--navy)] hidden sm:inline">
+            THE LABEL <span className="text-ink">STUDIO</span>
+          </span>
         </Link>
 
         {/* Right */}

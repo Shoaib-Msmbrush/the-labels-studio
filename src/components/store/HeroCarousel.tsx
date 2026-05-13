@@ -2,13 +2,18 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import hero1 from "@/assets/hero-labels-1.jpg";
+import hero2 from "@/assets/hero-labels-3.jpg";
+import hero3 from "@/assets/labels-grid.jpg";
+import heroNature from "@/assets/product-nature.jpeg";
+import hero4 from "@/assets/hero-labels-2.jpg";
 
 const SLIDES = [
-  { eyebrow: "VOLUME 04 / DROP 01", title: "ENGINEERED\nFOR MOTION", cta: "SHOP NOW", to: "/collections/all", bg: "linear-gradient(110deg,#0a0a0a 0%,#1c1c1c 55%,#262626 100%)", accent: "#f4f4f1" },
-  { eyebrow: "LAB SERIES · LOW", title: "BUILT IN\nTHE LAB", cta: "VIEW PAGE", to: "/about", bg: "linear-gradient(110deg,#f4f4f1 0%,#e9e9e4 60%,#dcdcd6 100%)", accent: "#050505" },
-  { eyebrow: "PRESS · 2026", title: "CULTURE\nIS A FORM", cta: "READ JOURNAL", to: "/press", bg: "linear-gradient(110deg,#050505 0%,#0e0e0e 50%,#1a1a1a 100%)", accent: "#f4f4f1" },
-  { eyebrow: "SIGNATURE RUNNER", title: "MADE FOR\nDISTANCE", cta: "SHOP RUNNER", to: "/collections/runners", bg: "linear-gradient(110deg,#1a1a1a,#3a3a3a)", accent: "#f4f4f1" },
-  { eyebrow: "ATELIER · CUSTOM", title: "BESPOKE\nFOOTWEAR", cta: "BOOK ATELIER", to: "/services", bg: "linear-gradient(110deg,#fff 0%,#ededed 100%)", accent: "#050505" },
+  { eyebrow: "STUDIO 04 / SEASON 01", title: "LABELS\nFOR THE WORLD'S\nBEST BRANDS.", cta: "EXPLORE LABELS", to: "/collections/all", image: heroNature, accent: "#f4f4f1", overlay: 0.55 },
+  { eyebrow: "WOVEN · LEATHER · HANGTAG", title: "THE DETAIL\nIS THE BRAND.", cta: "SEE THE CRAFT", to: "/about", image: hero1, accent: "#f4f4f1", overlay: 0.45 },
+  { eyebrow: "CUSTOM STUDIO", title: "DESIGNED.\nWOVEN.\nDELIVERED.", cta: "START A PROJECT", to: "/services", image: hero3, accent: "#f4f4f1", overlay: 0.55 },
+  { eyebrow: "PACKAGING SUITE", title: "EVERY TOUCH\nIS A STATEMENT.", cta: "SEE PACKAGING", to: "/collections/packaging", image: hero2, accent: "#f4f4f1", overlay: 0.45 },
+  { eyebrow: "SIGNATURE TAG", title: "HERRINGBONE.\nNAVY. ICONIC.", cta: "VIEW TAGS", to: "/collections/hangtags", image: hero4, accent: "#f4f4f1", overlay: 0.4 },
 ] as const;
 
 export function HeroCarousel() {
@@ -34,9 +39,11 @@ export function HeroCarousel() {
           exit={{ opacity: 0, scale: 1.0 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-0"
-          style={{ background: s.bg, color: s.accent }}
+          style={{ color: s.accent }}
         >
-          <div className="absolute inset-0 noise-bg opacity-40" />
+          <img src={s.image} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, rgba(5,5,15,${s.overlay*0.4}) 0%, rgba(5,5,15,${s.overlay}) 100%)` }} />
+          <div className="absolute inset-0 noise-bg opacity-20" />
           <div className="relative z-10 h-full flex flex-col justify-between p-6 md:p-12">
             <div className="flex items-start justify-between text-meta-sm opacity-70">
               <span>{s.eyebrow}</span>
