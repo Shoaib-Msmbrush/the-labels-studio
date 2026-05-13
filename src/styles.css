@@ -19,6 +19,8 @@
   --color-border: var(--border);
   --color-hairline: var(--hairline);
   --color-checkout: var(--checkout);
+  --color-navy: var(--navy);
+  --color-kraft: var(--kraft);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
@@ -49,6 +51,8 @@
   --border: oklch(0.14 0 0 / 14%);
   --hairline: oklch(0.14 0 0 / 14%);
   --checkout: oklch(0.55 0.22 257);     /* #006EFF */
+  --navy: oklch(0.28 0.09 264);         /* deep navy from logo */
+  --kraft: oklch(0.78 0.07 70);         /* warm kraft */
   --primary: oklch(0.14 0 0);
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.94 0.003 90);
