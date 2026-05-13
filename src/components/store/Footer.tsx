@@ -11,7 +11,7 @@ export function Footer() {
           <h3 className="text-3xl font-extrabold uppercase leading-[0.95] mb-5">FOR BRANDS<br/>WHO SWEAT<br/>THE DETAIL.</h3>
           <form onSubmit={(e) => e.preventDefault()} className="flex border-b border-paper/30 pb-2">
             <label htmlFor="footer-newsletter-email" className="sr-only">Email address</label>
-            <input id="footer-newsletter-email" type="email" placeholder="EMAIL ADDRESS" aria-label="Email address" className="flex-1 bg-transparent outline-none text-meta placeholder:opacity-50 text-paper" />
+            <input id="footer-newsletter-email" type="email" placeholder="EMAIL ADDRESS" aria-label="Email address" className="flex-1 bg-transparent outline-none text-meta placeholder:opacity-80 text-paper" />
             <button aria-label="Subscribe" className="text-meta opacity-80 hover:opacity-100">→</button>
           </form>
         </div>
