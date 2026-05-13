@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { StoreShell } from "@/components/store/StoreShell";
-import heroPress from "@/assets/hands-inspect.jpg";
+import heroPress from "@/assets/process-weave.jpg";
 import wovenDetail from "@/assets/woven-detail.jpg";
 import hangtagLuxury from "@/assets/hangtag-luxury.jpg";
-import packagingSuite from "@/assets/packaging-suite.jpg";
+import packagingSuite from "@/assets/process-delivery.jpg";
 import leatherDenim from "@/assets/leather-denim.jpg";
-import labelsGrid from "@/assets/labels-grid.jpg";
-import studioTable from "@/assets/studio-table.jpg";
+import labelsGrid from "@/assets/process-brief.jpg";
+import studioTable from "@/assets/process-finish.jpg";
 
 export const Route = createFileRoute("/press")({
   head: () => ({
