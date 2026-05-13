@@ -6,30 +6,33 @@ import { StoreShell } from "@/components/store/StoreShell";
 import { HeroCarousel } from "@/components/store/HeroCarousel";
 import { ScrollDockShowcase } from "@/components/store/ScrollDockShowcase";
 import { fetchProducts, ShopifyProduct } from "@/lib/shopify";
+import insideImg from "@/assets/hero-labels-1.jpg";
+import socialImg from "@/assets/hero-labels-3.jpg";
+import journeyImg from "@/assets/labels-grid.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "INDUSTRIA/LAB — Engineered for Motion. Built for Culture." },
-      { name: "description", content: "A premium sneaker lab. Editorial product engineering, limited drops, and bespoke footwear from the atelier." },
-      { property: "og:title", content: "INDUSTRIA/LAB — Built Different" },
-      { property: "og:description", content: "Premium lab-engineered sneakers, runners, slides and boots." },
+      { title: "THE LABEL STUDIO — Premium Labels for the World's Best Brands" },
+      { name: "description", content: "A studio designing custom woven labels, leather patches, hangtags and care labels for fashion brands worldwide." },
+      { property: "og:title", content: "THE LABEL STUDIO — Designed. Woven. Delivered." },
+      { property: "og:description", content: "Premium custom labels and packaging for global fashion brands." },
     ],
   }),
   component: Home,
 });
 
 const JOURNEY = [
-  { num: "01", label: "THE BLUEPRINT", body: "It begins as a sketch. A constraint. A material. The blueprint is the discipline before the build." },
-  { num: "02", label: "THE PROCESS", body: "We prototype, tear down, rebuild. Every silhouette is the residue of dozens of failed ones." },
-  { num: "03", label: "THE BUILD", body: "Manufactured in small batches. Inspected by hand. Numbered before it leaves the lab." },
-  { num: "04", label: "THE FUTURE", body: "What we ship next is already in the wall. The future is a panel we haven't cut yet." },
+  { num: "01", label: "THE BRIEF", body: "It begins with a brand. A material. A finish. Every label starts as a conversation about identity." },
+  { num: "02", label: "THE DESIGN", body: "We sketch, weave samples, refine threads. Each label is the residue of dozens of rejected ones." },
+  { num: "03", label: "THE STITCH", body: "Produced in our studio with Jacquard looms and master finishers. Inspected and packed by hand." },
+  { num: "04", label: "THE DELIVERY", body: "From our floor to your factory anywhere in the world. Tracked, certified, on time." },
 ] as const;
 
 const PRESS: Array<{ date: string; read: string; source: string; title: string; latest?: boolean }> = [
-  { date: "MAY · 2026", read: "4 MIN", source: "HYPESTUDIO", title: "Inside the lab building footwear like furniture", latest: true },
-  { date: "APR · 2026", read: "6 MIN", source: "FORM JOURNAL", title: "How a small atelier rewrote the runner silhouette" },
-  { date: "MAR · 2026", read: "3 MIN", source: "VOLUME", title: "Industrial poetry: a conversation with the founder" },
+  { date: "MAY · 2026", read: "4 MIN", source: "WGSN", title: "The studio rebuilding the woven label for modern fashion", latest: true },
+  { date: "APR · 2026", read: "6 MIN", source: "BUSINESS OF FASHION", title: "Why the hangtag is the most underrated brand asset" },
+  { date: "MAR · 2026", read: "3 MIN", source: "TEXTILE INSIGHT", title: "Inside The Label Studio's Jacquard atelier" },
 ] as const;
 
 function Home() {
@@ -59,11 +62,11 @@ function EditorialIntro() {
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="display-xxl text-[12vw] md:text-[8vw]"
           >
-            ENGINEERED<br/>FOR MOTION.<br/>BUILT FOR CULTURE.
+            DESIGNED FOR BRANDS.<br/>STITCHED FOR THE WORLD.
           </motion.h2>
         </div>
         <div className="md:col-span-2 text-meta-sm text-muted-foreground md:pt-2">
-          <p>A SMALL LAB MAKING SHOES THAT BEHAVE LIKE INSTRUMENTS — TUNED, REPAIRABLE, AND HONEST ABOUT THEIR MATERIALS.</p>
+          <p>A STUDIO CRAFTING CUSTOM WOVEN LABELS, LEATHER PATCHES & HANGTAGS FOR FASHION BRANDS — HONEST MATERIALS, OBSESSIVE FINISHING.</p>
         </div>
       </div>
     </section>
@@ -75,19 +78,19 @@ function InsideTheLab() {
     <section className="bg-bone border-b border-hairline">
       <div className="grid md:grid-cols-2">
         <motion.div initial={{ clipPath: "inset(0 0 100% 0)" }} whileInView={{ clipPath: "inset(0 0 0 0)" }} viewport={{ once: true }} transition={{ duration: 1.1, ease: [0.76,0,0.24,1] }}
-          className="aspect-[4/5] md:aspect-auto md:min-h-[80vh] relative overflow-hidden border-r border-hairline"
-          style={{ background: "linear-gradient(135deg,#0a0a0a,#1c1c1c 60%,#262626)" }}>
-          <div className="absolute inset-0 noise-bg opacity-40" />
-          <span className="absolute bottom-6 left-6 text-meta-sm text-paper/70">FIG · 02 — LAST INSPECTION</span>
+          className="aspect-[4/5] md:aspect-auto md:min-h-[80vh] relative overflow-hidden border-r border-hairline">
+          <img src={insideImg} alt="Inside the studio" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+          <span className="absolute bottom-6 left-6 text-meta-sm text-paper/80">FIG · 02 — STUDIO FLOOR / FINAL INSPECTION</span>
         </motion.div>
         <div className="p-8 md:p-16 flex flex-col justify-center">
-          <p className="text-meta-sm text-muted-foreground mb-6">02 / INSIDE THE LAB</p>
-          <h2 className="display-xxl text-5xl md:text-7xl mb-6">WE BUILD<br/>DIFFERENT.</h2>
+          <p className="text-meta-sm text-muted-foreground mb-6">02 / INSIDE THE STUDIO</p>
+          <h2 className="display-xxl text-5xl md:text-7xl mb-6">THE DETAIL<br/>IS THE BRAND.</h2>
           <p className="max-w-md text-meta-sm normal-case lowercase tracking-normal text-muted-foreground leading-relaxed mb-8" style={{ textTransform: "none", letterSpacing: 0 }}>
-            Designed in studio, prototyped in the lab, and finished by hand. Each silhouette is a small argument about how a shoe should behave — quiet, repairable, and shaped by the people who actually wear them.
+            Designed in-studio, woven on Jacquard looms, and finished by hand. Every label is a small argument about how a brand should feel — precise, tactile, and worthy of the garment it lives on.
           </p>
           <Link to="/about" className="arrow-cta border border-ink px-6 py-3 text-meta self-start">
-            INSIDE THE LAB <ArrowRight className="size-4" />
+            INSIDE THE STUDIO <ArrowRight className="size-4" />
           </Link>
         </div>
       </div>
@@ -102,14 +105,15 @@ function JourneyCarousel() {
     <section className="bg-ink text-paper relative overflow-hidden">
       <div className="grid md:grid-cols-12 min-h-[80vh]">
         <div className="md:col-span-2 p-8 border-r border-paper/10">
-          <p className="text-meta-sm opacity-50">03 / THE JOURNEY</p>
-          <p className="text-meta-sm opacity-50 mt-3">FOUNDER · M. ARJUN</p>
+          <p className="text-meta-sm opacity-50">03 / THE PROCESS</p>
+          <p className="text-meta-sm opacity-50 mt-3">BRIEF · DESIGN · STITCH · SHIP</p>
         </div>
         <motion.div key={item.num}
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}
           className="md:col-span-7 relative border-r border-paper/10 min-h-[60vh]"
-          style={{ background: `linear-gradient(135deg,#050505,#1a1a1a 60%,#0a0a0a)` }}>
-          <div className="absolute inset-0 noise-bg opacity-30" />
+        >
+          <img src={journeyImg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-50" loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/70" />
           <p className="absolute top-6 left-6 display-xxl text-7xl md:text-9xl opacity-80">{item.num}</p>
           <p className="absolute bottom-6 left-6 text-meta opacity-70">{item.label}</p>
         </motion.div>
@@ -173,13 +177,13 @@ function NewsletterSocialBlock() {
           </div>
         </form>
       </div>
-      <div className="relative min-h-[40vh] md:min-h-0 text-paper p-10 md:p-16 flex flex-col justify-end overflow-hidden"
-        style={{ background: "linear-gradient(135deg,#1a1a1a,#3a3a3a)" }}>
-        <div className="absolute inset-0 noise-bg opacity-30" />
+      <div className="relative min-h-[40vh] md:min-h-0 text-paper p-10 md:p-16 flex flex-col justify-end overflow-hidden">
+        <img src={socialImg} alt="" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
         <div className="relative z-10">
           <p className="text-meta-sm opacity-60 mb-4">05 / SOCIAL</p>
-          <h2 className="display-xxl text-5xl md:text-7xl mb-6">FOLLOW<br/>THE LAB.</h2>
-          <button className="arrow-cta border border-paper px-6 py-3 text-meta">FOLLOW @INDUSTRIA.LAB <ArrowUpRight className="size-4" /></button>
+          <h2 className="display-xxl text-5xl md:text-7xl mb-6">FOLLOW<br/>THE STUDIO.</h2>
+          <button className="arrow-cta border border-paper px-6 py-3 text-meta">FOLLOW @THELABELSTUDIO <ArrowUpRight className="size-4" /></button>
         </div>
       </div>
     </section>
