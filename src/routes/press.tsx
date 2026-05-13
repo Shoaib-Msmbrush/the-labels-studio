@@ -17,6 +17,7 @@ export const Route = createFileRoute("/press")({
       { property: "og:title", content: "Press — The Label Studio" },
       { property: "og:description", content: "Read the studio in print." },
     ],
+    links: [{ rel: "canonical", href: "https://dock-lab-studio.lovable.app/press" }],
   }),
   component: Press,
 });

@@ -8,14 +8,16 @@ export const Route = createFileRoute("/products/$handle")({
   head: ({ params }) => {
     const p = getProductByHandle(params.handle);
     const title = p?.title ?? params.handle.replace(/-/g, " ");
+    const fallbackDescription = "Explore premium custom labels and brand trims for fashion designers at The Label Studio.";
     return {
       meta: [
         { title: `${title.toUpperCase()} — The Label Studio` },
-        { name: "description", content: p?.description ?? "Premium custom labels for fashion brands." },
+        { name: "description", content: p?.description ?? fallbackDescription },
         { property: "og:title", content: `${title} — The Label Studio` },
-        { property: "og:description", content: p?.description ?? "" },
+        { property: "og:description", content: p?.description ?? fallbackDescription },
         { property: "og:image", content: p?.image ?? "" },
       ],
+      links: [{ rel: "canonical", href: `https://dock-lab-studio.lovable.app/products/${params.handle}` }],
     };
   },
   component: ProductPage,

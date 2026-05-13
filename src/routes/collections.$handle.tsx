@@ -15,6 +15,7 @@ export const Route = createFileRoute("/collections/$handle")({
         { property: "og:title", content: `${name} — The Label Studio` },
         { property: "og:description", content: `Browse our ${name.toLowerCase()} collection.` },
       ],
+      links: [{ rel: "canonical", href: `https://dock-lab-studio.lovable.app/collections/${params.handle}` }],
     };
   },
   component: CollectionPage,

@@ -19,6 +19,7 @@ export const Route = createFileRoute("/services")({
       { property: "og:title", content: "Custom / OEM — The Label Studio" },
       { property: "og:description", content: "Bespoke garment trims and packaging for global fashion brands." },
     ],
+    links: [{ rel: "canonical", href: "https://dock-lab-studio.lovable.app/services" }],
   }),
   component: Services,
 });

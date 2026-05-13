@@ -13,6 +13,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "The Studio — The Label Studio" },
       { property: "og:description", content: "A studio designing custom labels for the world's best brands." },
     ],
+    links: [{ rel: "canonical", href: "https://dock-lab-studio.lovable.app/about" }],
   }),
   component: About,
 });
