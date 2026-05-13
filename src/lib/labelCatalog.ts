@@ -12,6 +12,12 @@ import studioTable from "@/assets/studio-table.jpg";
 import handsInspect from "@/assets/hands-inspect.jpg";
 import labelsGrid from "@/assets/labels-grid.jpg";
 import studioCraft from "@/assets/studio-craft.jpg";
+import careDetail from "@/assets/care-detail.jpg";
+import processBrief from "@/assets/process-brief.jpg";
+import processDesign from "@/assets/process-design.jpg";
+import processWeave from "@/assets/process-weave.jpg";
+import processFinish from "@/assets/process-finish.jpg";
+import processDelivery from "@/assets/process-delivery.jpg";
 
 export type LabelCategory =
   | "woven-labels"
@@ -193,7 +199,7 @@ export const PRODUCTS: LabelProduct[] = [
     description: "Wash-safe satin labels with soft-cut edges. Compliant with EU, US, and UK textile labelling laws.",
     materials: "Polyester satin, 8mm or 12mm widths, multi-language print.",
     artwork: "We localize care symbols + composition copy from your tech pack.",
-    image: careImg, hover: wovenImg, gallery: [careImg, wovenImg],
+    image: careDetail, hover: careImg, gallery: [careDetail, careImg, processFinish, handsInspect],
   },
   {
     handle: "heat-transfer-care-label",
@@ -205,7 +211,7 @@ export const PRODUCTS: LabelProduct[] = [
     description: "Direct-to-fabric heat transfer for a tagless, frictionless finish. The label that disappears.",
     materials: "Eco-PU film, OEKO-TEX certified.",
     artwork: "Provide vector or 600dpi raster for symbol legibility.",
-    image: careImg, hover: embroideredImg, gallery: [careImg, embroideredImg],
+    image: careImg, hover: careDetail, gallery: [careImg, careDetail, embroideredImg],
   },
   {
     handle: "embroidered-logo-patch",
@@ -273,7 +279,7 @@ export const CATEGORY_HEROES: Record<string, { image: string; tagline: string }>
   "woven-labels": { image: wovenDetail, tagline: "The signature stitched into every garment." },
   "leather-patches": { image: leatherDenim, tagline: "Heritage you can feel between your fingers." },
   "hangtags": { image: hangtagLuxury, tagline: "The first handshake between brand and buyer." },
-  "care-labels": { image: careImg, tagline: "Quiet precision for the inside of every piece." },
+  "care-labels": { image: careDetail, tagline: "Quiet precision for the inside of every piece." },
   "embroidered-patches": { image: embroideredImg, tagline: "Iconography that outlasts the season." },
   "packaging": { image: packagingSuite, tagline: "The unboxing is part of the product." },
   "custom-oem": { image: studioTable, tagline: "Your full trim system, sampled and produced as one." },

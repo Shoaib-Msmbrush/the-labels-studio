@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
+import footerStrip from "@/assets/footer-strip.jpg";
 
 export function Footer() {
   return (
@@ -51,8 +52,9 @@ export function Footer() {
         <div className="w-full">
           <div className="flex flex-wrap items-center gap-4 md:gap-6 leading-[0.85]">
             <span className="display-xxl text-[18vw] md:text-[15vw]">THE</span>
-            <span className="inline-block h-[14vw] md:h-[12vw] w-[28vw] md:w-[24vw] my-2"
-              style={{ background: "linear-gradient(110deg,#0f1b3d,#1e3a5f 40%,#0a1230)" }} />
+            <span className="inline-block h-[14vw] md:h-[12vw] w-[28vw] md:w-[24vw] my-2 overflow-hidden border border-paper/10">
+              <img src={footerStrip} alt="Woven label ribbon" className="w-full h-full object-cover" loading="lazy" />
+            </span>
             <span className="display-xxl text-[18vw] md:text-[15vw]">LABEL</span>
             <span className="display-xxl text-[18vw] md:text-[15vw]">STUDIO.</span>
           </div>

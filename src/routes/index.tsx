@@ -7,7 +7,11 @@ import { HeroCarousel } from "@/components/store/HeroCarousel";
 import { ScrollDockShowcase } from "@/components/store/ScrollDockShowcase";
 import insideImg from "@/assets/hero-labels-1.jpg";
 import socialImg from "@/assets/hero-labels-3.jpg";
-import journeyImg from "@/assets/labels-grid.jpg";
+import journeyBrief from "@/assets/process-brief.jpg";
+import journeyDesign from "@/assets/process-design.jpg";
+import journeyWeave from "@/assets/process-weave.jpg";
+import journeyFinish from "@/assets/process-finish.jpg";
+import journeyDelivery from "@/assets/process-delivery.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -22,11 +26,11 @@ export const Route = createFileRoute("/")({
 });
 
 const JOURNEY = [
-  { num: "01", label: "THE BRIEF", body: "It begins with a brand. A material. A finish. Every label starts as a conversation about identity." },
-  { num: "02", label: "THE DESIGN", body: "We sketch, weave samples, refine threads. Each label is the residue of dozens of rejected ones." },
-  { num: "03", label: "THE WEAVE", body: "Produced in our studio on Jacquard looms by master finishers. Every metre inspected by hand." },
-  { num: "04", label: "THE FINISH", body: "Cut, sealed, folded. Pressed, packed, signed off — sample-matched before it leaves the floor." },
-  { num: "05", label: "THE DELIVERY", body: "From our studio to your factory, anywhere in the world. Tracked, certified, on time." },
+  { num: "01", label: "THE BRIEF", body: "It begins with a brand. A material. A finish. Every label starts as a conversation about identity.", image: journeyBrief },
+  { num: "02", label: "THE DESIGN", body: "We sketch, weave samples, refine threads. Each label is the residue of dozens of rejected ones.", image: journeyDesign },
+  { num: "03", label: "THE WEAVE", body: "Produced in our studio on Jacquard looms by master finishers. Every metre inspected by hand.", image: journeyWeave },
+  { num: "04", label: "THE FINISH", body: "Cut, sealed, folded. Pressed, packed, signed off — sample-matched before it leaves the floor.", image: journeyFinish },
+  { num: "05", label: "THE DELIVERY", body: "From our studio to your factory, anywhere in the world. Tracked, certified, on time.", image: journeyDelivery },
 ] as const;
 
 const PRESS: Array<{ date: string; read: string; source: string; title: string; latest?: boolean }> = [
@@ -112,8 +116,8 @@ function JourneyCarousel() {
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}
           className="md:col-span-7 relative border-r border-paper/10 min-h-[60vh]"
         >
-          <img src={journeyImg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-50" loading="lazy" />
-          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/70" />
+          <img src={item.image} alt={item.label} className="absolute inset-0 w-full h-full object-cover opacity-70" loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/55 via-black/25 to-black/70" />
           <p className="absolute top-6 left-6 display-xxl text-7xl md:text-9xl opacity-80">{item.num}</p>
           <p className="absolute bottom-6 left-6 text-meta opacity-70">{item.label}</p>
         </motion.div>

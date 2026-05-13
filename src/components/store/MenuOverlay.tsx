@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { useUiStore } from "@/hooks/useUiStore";
 import { useEffect } from "react";
+import menuFeatured from "@/assets/menu-featured.jpg";
 
 const ease = [0.76, 0, 0.24, 1] as const;
 
@@ -81,14 +82,14 @@ export function MenuOverlay() {
 
             {/* Col 3 — featured */}
             <Stagger className="border-r border-hairline relative bg-ink text-paper overflow-hidden min-h-[40vh]">
-              <div className="absolute inset-0 opacity-70"
-                style={{ backgroundImage: "linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 60%,#000 100%)" }} />
-              <div className="absolute inset-0 noise-bg opacity-30" />
+              <img src={menuFeatured} alt="Signature woven label inside a wool overcoat" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(5,5,15,0.25) 0%, rgba(5,5,15,0.85) 100%)" }} />
+              <div className="absolute inset-0 noise-bg opacity-20" />
               <div className="relative z-10 h-full flex flex-col justify-between p-8 md:p-10">
-                <p className="text-meta-sm opacity-60">FEATURED COLLECTION</p>
+                <p className="text-meta-sm opacity-80">FEATURED COLLECTION</p>
                 <div>
-                  <h3 className="display-xxl text-5xl md:text-6xl">SEASON 04 / SIGNATURE TAGS</h3>
-                  <p className="text-meta mt-3 opacity-70">12 LABELS · GLOBAL EDITION</p>
+                  <h3 className="display-xxl text-5xl md:text-6xl">SIGNATURE WOVEN LABELS</h3>
+                  <p className="text-meta mt-3 opacity-80">DAMASK · NAVY · IVORY · MOQ 500</p>
                   <Link to="/collections/$handle" params={{ handle: "all" }} onClick={closeMenu}
                     className="arrow-cta mt-6 inline-flex text-meta">
                     EXPLORE COLLECTION <ArrowUpRight className="size-4" />
