@@ -117,10 +117,10 @@ function ActivePanel({ panel, index, total }: { panel: any; index: number; total
       </div>
 
       {/* Image */}
-      <div className="col-span-12 md:col-span-6 row-span-5 flex items-center justify-center p-6 md:p-10 bg-bone overflow-hidden">
+      <div className="col-span-12 md:col-span-6 row-span-5 relative bg-bone overflow-hidden">
         {panel.image ? (
           <img key={panel.image} src={panel.image} alt={panel.title}
-            className="max-h-full max-w-full object-contain animate-[heroSlide_.7s_cubic-bezier(.22,1,.36,1)_both]" />
+            className="absolute inset-0 w-full h-full object-cover animate-[heroSlide_.7s_cubic-bezier(.22,1,.36,1)_both]" />
         ) : (
           <div className="size-full flex items-center justify-center text-muted-foreground text-meta border border-dashed border-hairline">
             PRODUCT IMAGE — ADD A PRODUCT FROM THE CHAT
