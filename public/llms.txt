@@ -1,0 +1,34 @@
+# The Label Studio
+
+> Premium custom label and garment trim studio for fashion brands — woven labels, leather patches, hangtags, care labels, embroidered patches, and packaging.
+
+An editorial e-commerce studio specializing in luxury brand trims: signature woven neck labels, satin and damask weaves, embossed leather patches, foil hangtags, soft-touch care labels, embroidered and chenille patches, and complete packaging suites. Brief → Design → Stitch → Ship.
+
+## Pages
+
+- [Home](/): Studio overview, featured trims, and process journey.
+- [Services](/services): Capabilities, materials, finishes, and how we work with brands.
+- [About](/about): The studio, craft, and atelier.
+- [Press](/press): Editorial features and brand collaborations.
+
+## Collections
+
+- [All Labels](/collections/all): Full catalog of labels, patches, hangtags, and packaging.
+- [Woven Labels](/collections/woven-labels): Damask, satin, and high-density woven labels.
+- [Leather Patches](/collections/leather-patches): Embossed and vegan leather brand patches.
+- [Hangtags](/collections/hangtags): Foil, kraft, and minimal hangtags.
+- [Care Labels](/collections/care-labels): Soft-touch and heat-transfer care labels.
+- [Embroidered Patches](/collections/embroidered-patches): Logo and chenille varsity patches.
+- [Packaging](/collections/packaging): Premium packaging and brand trim kits.
+- [Custom OEM](/collections/custom-oem): Bespoke trim development.
+
+## Featured Products
+
+- [Signature Woven Neck Label](/products/signature-woven-neck-label): Flagship woven neck label.
+- [Embossed Leather Patch](/products/embossed-leather-patch): Premium leather brand patch.
+- [Luxury Foil Hangtag](/products/luxury-foil-hangtag): Foil-stamped hangtag.
+- [Premium Packaging Suite](/products/premium-packaging-suite): Complete branded packaging set.
+
+## Optional
+
+- [Sitemap](/sitemap.xml): Full list of indexable URLs.
