@@ -2,14 +2,20 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { fetchProducts, formatPrice, ShopifyProduct } from "@/lib/shopify";
+import wovenImg from "@/assets/product-woven.jpg";
+import leatherImg from "@/assets/product-leather.jpg";
+import hangtagImg from "@/assets/product-hangtag.jpg";
+import careImg from "@/assets/product-care.jpg";
+import embroideredImg from "@/assets/product-embroidered.jpg";
+import packagingImg from "@/assets/product-packaging.jpg";
 
 const PLACEHOLDER_PANELS = [
-  { num: "01", title: "WOVEN LABELS", colors: 4, philosophy: "THE SIGNATURE STITCHED INTO EVERY GARMENT." },
-  { num: "02", title: "LEATHER PATCHES", colors: 3, philosophy: "HERITAGE YOU CAN FEEL BETWEEN YOUR FINGERS." },
-  { num: "03", title: "HANGTAGS", colors: 5, philosophy: "THE FIRST HANDSHAKE BETWEEN BRAND AND BUYER." },
-  { num: "04", title: "CARE LABELS", colors: 2, philosophy: "QUIET PRECISION FOR THE INSIDE OF EVERY PIECE." },
-  { num: "05", title: "EMBROIDERED PATCHES", colors: 6, philosophy: "ICONOGRAPHY THAT OUTLASTS THE SEASON." },
-  { num: "06", title: "PACKAGING SUITE", colors: 3, philosophy: "THE UNBOXING IS PART OF THE PRODUCT." },
+  { num: "01", title: "WOVEN LABELS", colors: 4, philosophy: "THE SIGNATURE STITCHED INTO EVERY GARMENT.", fallback: wovenImg },
+  { num: "02", title: "LEATHER PATCHES", colors: 3, philosophy: "HERITAGE YOU CAN FEEL BETWEEN YOUR FINGERS.", fallback: leatherImg },
+  { num: "03", title: "HANGTAGS", colors: 5, philosophy: "THE FIRST HANDSHAKE BETWEEN BRAND AND BUYER.", fallback: hangtagImg },
+  { num: "04", title: "CARE LABELS", colors: 2, philosophy: "QUIET PRECISION FOR THE INSIDE OF EVERY PIECE.", fallback: careImg },
+  { num: "05", title: "EMBROIDERED PATCHES", colors: 6, philosophy: "ICONOGRAPHY THAT OUTLASTS THE SEASON.", fallback: embroideredImg },
+  { num: "06", title: "PACKAGING SUITE", colors: 3, philosophy: "THE UNBOXING IS PART OF THE PRODUCT.", fallback: packagingImg },
 ] as const;
 
 export function ScrollDockShowcase() {
@@ -26,7 +32,7 @@ export function ScrollDockShowcase() {
       ...p,
       product: prod,
       title: prod ? prod.node.title.toUpperCase() : p.title,
-      image: prod?.node.images.edges[0]?.node.url ?? null,
+      image: prod?.node.images.edges[0]?.node.url ?? p.fallback,
       price: prod ? formatPrice(prod.node.priceRange.minVariantPrice.amount, prod.node.priceRange.minVariantPrice.currencyCode) : null,
       handle: prod?.node.handle,
     };
