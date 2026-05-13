@@ -5,7 +5,6 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { StoreShell } from "@/components/store/StoreShell";
 import { HeroCarousel } from "@/components/store/HeroCarousel";
 import { ScrollDockShowcase } from "@/components/store/ScrollDockShowcase";
-import { fetchProducts, ShopifyProduct } from "@/lib/shopify";
 import insideImg from "@/assets/hero-labels-1.jpg";
 import socialImg from "@/assets/hero-labels-3.jpg";
 import journeyImg from "@/assets/labels-grid.jpg";
