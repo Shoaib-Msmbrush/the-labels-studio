@@ -6,6 +6,7 @@ import { StoreShell } from "@/components/store/StoreShell";
 import { HeroCarousel } from "@/components/store/HeroCarousel";
 import { ScrollDockShowcase } from "@/components/store/ScrollDockShowcase";
 import insideImg from "@/assets/hero-labels-1.jpg";
+import heroLcp from "@/assets/product-nature.jpeg";
 import socialImg from "@/assets/hero-labels-3.jpg";
 import journeyBrief from "@/assets/process-brief.jpg";
 import journeyDesign from "@/assets/process-design.jpg";
@@ -21,7 +22,10 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "THE LABEL STUDIO — Designed. Woven. Delivered." },
       { property: "og:description", content: "Premium custom labels and packaging for global fashion brands." },
     ],
-    links: [{ rel: "canonical", href: "https://dock-lab-studio.lovable.app/" }],
+    links: [
+      { rel: "canonical", href: "https://dock-lab-studio.lovable.app/" },
+      { rel: "preload", as: "image", href: heroLcp, fetchpriority: "high" },
+    ],
   }),
   component: Home,
 });
