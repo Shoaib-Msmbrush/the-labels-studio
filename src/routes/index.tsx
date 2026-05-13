@@ -26,7 +26,7 @@ const JOURNEY = [
   { num: "04", label: "THE FUTURE", body: "What we ship next is already in the wall. The future is a panel we haven't cut yet." },
 ] as const;
 
-const PRESS = [
+const PRESS: Array<{ date: string; read: string; source: string; title: string; latest?: boolean }> = [
   { date: "MAY · 2026", read: "4 MIN", source: "HYPESTUDIO", title: "Inside the lab building footwear like furniture", latest: true },
   { date: "APR · 2026", read: "6 MIN", source: "FORM JOURNAL", title: "How a small atelier rewrote the runner silhouette" },
   { date: "MAR · 2026", read: "3 MIN", source: "VOLUME", title: "Industrial poetry: a conversation with the founder" },
