@@ -17,9 +17,12 @@ export function Footer() {
           <p className="text-meta-sm opacity-60 mb-4">LABELS</p>
           <ul className="space-y-2 text-meta">
             <li><Link to="/collections/$handle" params={{handle:"all"}}>ALL LABELS</Link></li>
-            <li><Link to="/collections/$handle" params={{handle:"woven"}}>WOVEN LABELS</Link></li>
-            <li><Link to="/collections/$handle" params={{handle:"leather"}}>LEATHER PATCHES</Link></li>
+            <li><Link to="/collections/$handle" params={{handle:"woven-labels"}}>WOVEN LABELS</Link></li>
+            <li><Link to="/collections/$handle" params={{handle:"leather-patches"}}>LEATHER PATCHES</Link></li>
             <li><Link to="/collections/$handle" params={{handle:"hangtags"}}>HANGTAGS</Link></li>
+            <li><Link to="/collections/$handle" params={{handle:"care-labels"}}>CARE LABELS</Link></li>
+            <li><Link to="/collections/$handle" params={{handle:"embroidered-patches"}}>EMBROIDERED PATCHES</Link></li>
+            <li><Link to="/collections/$handle" params={{handle:"packaging"}}>PACKAGING</Link></li>
           </ul>
         </div>
         <div className="p-8 md:p-10 border-r border-paper/10">
@@ -27,6 +30,7 @@ export function Footer() {
           <ul className="space-y-2 text-meta">
             <li><Link to="/about">THE STUDIO</Link></li>
             <li><Link to="/services">CUSTOM / OEM</Link></li>
+            <li><Link to="/services">PROCESS</Link></li>
             <li><Link to="/press">PRESS</Link></li>
             <li><a href="#">LOOKBOOK</a></li>
           </ul>

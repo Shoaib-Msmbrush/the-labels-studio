@@ -25,8 +25,9 @@ export const Route = createFileRoute("/")({
 const JOURNEY = [
   { num: "01", label: "THE BRIEF", body: "It begins with a brand. A material. A finish. Every label starts as a conversation about identity." },
   { num: "02", label: "THE DESIGN", body: "We sketch, weave samples, refine threads. Each label is the residue of dozens of rejected ones." },
-  { num: "03", label: "THE STITCH", body: "Produced in our studio with Jacquard looms and master finishers. Inspected and packed by hand." },
-  { num: "04", label: "THE DELIVERY", body: "From our floor to your factory anywhere in the world. Tracked, certified, on time." },
+  { num: "03", label: "THE WEAVE", body: "Produced in our studio on Jacquard looms by master finishers. Every metre inspected by hand." },
+  { num: "04", label: "THE FINISH", body: "Cut, sealed, folded. Pressed, packed, signed off — sample-matched before it leaves the floor." },
+  { num: "05", label: "THE DELIVERY", body: "From our studio to your factory, anywhere in the world. Tracked, certified, on time." },
 ] as const;
 
 const PRESS: Array<{ date: string; read: string; source: string; title: string; latest?: boolean }> = [
