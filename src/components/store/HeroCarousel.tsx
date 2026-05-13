@@ -41,7 +41,16 @@ export function HeroCarousel() {
           className="absolute inset-0"
           style={{ color: s.accent }}
         >
-          <img src={s.image} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <img
+            src={s.image}
+            alt=""
+            width={1920}
+            height={1080}
+            fetchPriority={i === 0 ? "high" : "auto"}
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
           <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, rgba(5,5,15,${s.overlay*0.4}) 0%, rgba(5,5,15,${s.overlay}) 100%)` }} />
           <div className="absolute inset-0 noise-bg opacity-20" />
           <div className="relative z-10 h-full flex flex-col justify-between p-6 md:p-12">
