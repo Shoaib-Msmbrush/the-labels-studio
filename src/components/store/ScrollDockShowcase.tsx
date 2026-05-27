@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 import wovenImg from "@/assets/woven-detail.jpg";
 import wovenAlt from "@/assets/product-woven.jpg";
 import leatherImg from "@/assets/leather-denim.jpg";
@@ -82,8 +82,10 @@ export function ScrollDockShowcase() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-paper" style={{ height: `${PANELS.length * 100}vh` }}>
-      <div className="sticky top-12 h-[calc(100vh-48px)] overflow-hidden border-y border-hairline flex flex-col">
+    <>
+    <MobileShowcase />
+    <section ref={sectionRef} className="relative bg-paper hidden md:block" style={{ height: `${PANELS.length * 100}vh` }}>
+      <div className="sticky top-[72px] h-[calc(100vh-72px)] overflow-hidden border-y border-hairline flex flex-col">
         <div className="border-b border-hairline">
           {PANELS.slice(0, active).map((p, i) => <DockBar key={i} num={p.num} title={p.title} />)}
         </div>
@@ -91,6 +93,89 @@ export function ScrollDockShowcase() {
         <div className="border-t border-hairline mt-auto">
           {PANELS.slice(active + 1).map((p, i) => <DockBar key={i} num={p.num} title={p.title} />)}
         </div>
+      </div>
+    </section>
+    </>
+  );
+}
+
+function MobileShowcase() {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [index, setIndex] = useState(0);
+
+  const scrollTo = (i: number) => {
+    const el = scrollerRef.current; if (!el) return;
+    const clamped = Math.max(0, Math.min(PANELS.length - 1, i));
+    el.scrollTo({ left: clamped * el.clientWidth, behavior: "smooth" });
+  };
+
+  const onScroll = () => {
+    const el = scrollerRef.current; if (!el) return;
+    const i = Math.round(el.scrollLeft / el.clientWidth);
+    if (i !== index) setIndex(i);
+  };
+
+  return (
+    <section className="md:hidden bg-paper border-y border-hairline relative">
+      <div
+        ref={scrollerRef}
+        onScroll={onScroll}
+        className="overflow-x-auto snap-x snap-mandatory flex touch-pan-y scrollbar-none"
+        style={{ scrollbarWidth: "none" }}
+      >
+        {PANELS.map((p) => (
+          <article key={p.num} className="snap-start w-full flex-shrink-0 flex flex-col">
+            <div className="px-4 h-10 flex items-center justify-between text-meta-sm border-b border-hairline">
+              <span>{p.num}. / {p.title}</span>
+              <span className="text-muted-foreground">{p.chip.toUpperCase()}</span>
+            </div>
+            <div className="aspect-square bg-bone overflow-hidden">
+              <img src={p.image} alt={p.title} className="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div className="p-4 flex flex-col gap-3 border-t border-hairline">
+              <p className="text-meta-sm text-muted-foreground">PRODUCT PHILOSOPHY</p>
+              <p className="text-lg font-bold uppercase leading-tight">"{p.philosophy}"</p>
+              <div className="pt-2 border-t border-hairline">
+                <p className="text-meta">{p.productTitle.toUpperCase()}</p>
+                <p className="text-meta-sm text-muted-foreground mt-1" style={{ textTransform: "none", letterSpacing: 0 }}>{p.productMeta}</p>
+                <p className="text-2xl font-extrabold mt-2">{p.priceLabel}</p>
+              </div>
+              <Link to="/products/$handle" params={{ handle: p.productHandle }}
+                className="arrow-cta inline-flex border border-ink px-3 py-2 text-meta-sm justify-center">
+                EXPLORE PRODUCT <ArrowUpRight className="size-3" />
+              </Link>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="flex items-center justify-between px-4 py-3 border-t border-hairline">
+        <button
+          onClick={() => scrollTo(index - 1)}
+          disabled={index === 0}
+          aria-label="Previous"
+          className="border border-ink p-2 disabled:opacity-30"
+        >
+          <ArrowLeft className="size-4" />
+        </button>
+        <div className="flex items-center gap-2">
+          {PANELS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className={`size-1.5 rounded-full transition-all ${i === index ? "bg-ink w-4" : "bg-ink/30"}`}
+            />
+          ))}
+        </div>
+        <button
+          onClick={() => scrollTo(index + 1)}
+          disabled={index === PANELS.length - 1}
+          aria-label="Next"
+          className="border border-ink p-2 disabled:opacity-30"
+        >
+          <ArrowRight className="size-4" />
+        </button>
       </div>
     </section>
   );
