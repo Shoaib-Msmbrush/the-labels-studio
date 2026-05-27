@@ -53,7 +53,7 @@ export function Header() {
         </nav>
         <button onClick={toggleMenu} className="md:hidden text-meta flex items-center gap-2">
           {menuOpen ? <X className="size-4" /> : <MenuIcon className="size-4" />}
-          {menuOpen ? "CLOSE" : "MENU"}
+          <span className="hidden sm:inline">{menuOpen ? "CLOSE" : "MENU"}</span>
         </button>
 
         {/* Center logo */}
