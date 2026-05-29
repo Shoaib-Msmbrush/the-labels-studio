@@ -39,9 +39,9 @@ export function Header() {
       </div>
 
       {/* Main nav */}
-      <div className="h-12 flex items-center justify-between px-4 md:px-6">
+      <div className="h-12 flex items-center px-3 md:px-6 gap-2">
         {/* Left */}
-        <nav className="hidden md:flex items-center gap-6 text-meta">
+        <nav className="hidden md:flex items-center gap-6 text-meta md:min-w-[320px]">
           <button onClick={toggleMenu} className="flex items-center gap-2 hover:opacity-60">
             {menuOpen ? <X className="size-4" /> : <MenuIcon className="size-4" />}
             <span>{menuOpen ? "CLOSE" : "MENU"}</span>
@@ -51,21 +51,24 @@ export function Header() {
           <Link to="/about" className="hover:opacity-60">THE STUDIO</Link>
           <Link to="/services" className="hover:opacity-60">CUSTOM</Link>
         </nav>
-        <button onClick={toggleMenu} className="md:hidden text-meta flex items-center gap-2">
+        <button onClick={toggleMenu} aria-label="Menu" className="md:hidden text-meta flex items-center gap-2 min-w-[40px]">
           {menuOpen ? <X className="size-4" /> : <MenuIcon className="size-4" />}
           <span className="hidden sm:inline">{menuOpen ? "CLOSE" : "MENU"}</span>
         </button>
 
         {/* Center logo */}
-        <Link to="/" className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
-          <img src={logo} alt="The Label Studio" className="h-7 w-auto object-contain" />
-          <span className="font-extrabold tracking-[0.18em] text-[15px] uppercase leading-none text-[color:var(--navy)] hidden sm:inline">
+        <Link
+          to="/"
+          className="flex-1 flex items-center justify-center gap-2 min-w-0 px-2 md:absolute md:left-1/2 md:-translate-x-1/2 md:flex-none md:px-0"
+        >
+          <img src={logo} alt="The Label Studio" className="h-5 md:h-7 w-auto object-contain shrink-0" />
+          <span className="font-extrabold tracking-[0.18em] text-[11px] sm:text-[13px] md:text-[15px] uppercase leading-none text-[color:var(--navy)] truncate">
             THE LABEL <span className="text-ink">STUDIO</span>
           </span>
         </Link>
 
         {/* Right */}
-        <div className="flex items-center gap-4 md:gap-5 text-meta">
+        <div className="flex items-center justify-end gap-3 md:gap-5 text-meta min-w-[40px] md:min-w-[320px]">
           <button onClick={toggleSearch} className="hidden md:flex items-center gap-1.5 hover:opacity-60">
             <Search className="size-4" /> SEARCH
           </button>
@@ -75,11 +78,15 @@ export function Header() {
           <button className="hidden md:flex items-center gap-1.5 hover:opacity-60">
             <Heart className="size-4" /> WISHLIST(0)
           </button>
-          <button onClick={openCart} className="flex items-center gap-1.5 hover:opacity-60">
-            <ShoppingBag className="size-4" />
-            <span className="hidden sm:inline">CART</span>({cartCount.toString().padStart(2,"0")})
+          <button aria-label="Wishlist" className="md:hidden hover:opacity-60">
+            <Heart className="size-4" />
           </button>
-          <button onClick={toggleSearch} aria-label="Search" className="md:hidden">
+          <button onClick={openCart} aria-label="Cart" className="flex items-center gap-1.5 hover:opacity-60">
+            <ShoppingBag className="size-4" />
+            <span className="hidden md:inline">CART</span>
+            <span className="tabular-nums">({cartCount.toString().padStart(2,"0")})</span>
+          </button>
+          <button onClick={toggleSearch} aria-label="Search" className="md:hidden hover:opacity-60">
             <Search className="size-4" />
           </button>
         </div>

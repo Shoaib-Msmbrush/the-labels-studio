@@ -1,6 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import wovenImg from "@/assets/woven-detail.jpg";
 import wovenAlt from "@/assets/product-woven.jpg";
 import leatherImg from "@/assets/leather-denim.jpg";
@@ -100,31 +102,33 @@ export function ScrollDockShowcase() {
 }
 
 function MobileShowcase() {
-  const scrollerRef = useRef<HTMLDivElement>(null);
+  const autoplay = useRef(
+    Autoplay({ delay: 10000, stopOnInteraction: false, stopOnMouseEnter: false })
+  );
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "start", dragFree: false },
+    [autoplay.current]
+  );
   const [index, setIndex] = useState(0);
 
-  const scrollTo = (i: number) => {
-    const el = scrollerRef.current; if (!el) return;
-    const clamped = Math.max(0, Math.min(PANELS.length - 1, i));
-    el.scrollTo({ left: clamped * el.clientWidth, behavior: "smooth" });
-  };
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => setIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on("select", onSelect);
+    onSelect();
+    return () => { emblaApi.off("select", onSelect); };
+  }, [emblaApi]);
 
-  const onScroll = () => {
-    const el = scrollerRef.current; if (!el) return;
-    const i = Math.round(el.scrollLeft / el.clientWidth);
-    if (i !== index) setIndex(i);
-  };
+  const scrollTo = useCallback((i: number) => emblaApi?.scrollTo(i), [emblaApi]);
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
     <section className="md:hidden bg-paper border-y border-hairline relative">
-      <div
-        ref={scrollerRef}
-        onScroll={onScroll}
-        className="overflow-x-auto snap-x snap-mandatory flex touch-pan-y scrollbar-none"
-        style={{ scrollbarWidth: "none" }}
-      >
+      <div ref={emblaRef} className="overflow-hidden">
+        <div className="flex touch-pan-y">
         {PANELS.map((p) => (
-          <article key={p.num} className="snap-start w-full flex-shrink-0 flex flex-col">
+          <article key={p.num} className="min-w-0 flex-[0_0_100%] flex flex-col">
             <div className="px-4 h-10 flex items-center justify-between text-meta-sm border-b border-hairline">
               <span>{p.num}. / {p.title}</span>
               <span className="text-muted-foreground">{p.chip.toUpperCase()}</span>
@@ -147,14 +151,14 @@ function MobileShowcase() {
             </div>
           </article>
         ))}
+        </div>
       </div>
 
       <div className="flex items-center justify-between px-4 py-3 border-t border-hairline">
         <button
-          onClick={() => scrollTo(index - 1)}
-          disabled={index === 0}
+          onClick={scrollPrev}
           aria-label="Previous"
-          className="border border-ink p-2 disabled:opacity-30"
+          className="border border-ink p-2"
         >
           <ArrowLeft className="size-4" />
         </button>
@@ -169,10 +173,9 @@ function MobileShowcase() {
           ))}
         </div>
         <button
-          onClick={() => scrollTo(index + 1)}
-          disabled={index === PANELS.length - 1}
+          onClick={scrollNext}
           aria-label="Next"
-          className="border border-ink p-2 disabled:opacity-30"
+          className="border border-ink p-2"
         >
           <ArrowRight className="size-4" />
         </button>
