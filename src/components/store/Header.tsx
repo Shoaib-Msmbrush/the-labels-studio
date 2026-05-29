@@ -68,7 +68,7 @@ export function Header() {
         </Link>
 
         {/* Right */}
-        <div className="flex items-center justify-end gap-3 md:gap-5 text-meta min-w-[40px] md:min-w-[320px]">
+        <div className="flex items-center justify-end gap-3 md:gap-5 text-meta min-w-[40px] md:min-w-[320px] md:ml-auto">
           <button onClick={toggleSearch} className="hidden md:flex items-center gap-1.5 hover:opacity-60">
             <Search className="size-4" /> SEARCH
           </button>
