@@ -1,6 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import wovenImg from "@/assets/woven-detail.jpg";
 import wovenAlt from "@/assets/product-woven.jpg";
 import leatherImg from "@/assets/leather-denim.jpg";
